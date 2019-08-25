@@ -1,5 +1,7 @@
 ## 0.4 New Note
-![alt text](https://github.com/gabrielamuller/fullstack_react/part-0/img/0.4_new_note.png "0.4 New Note")
+![alt text][logo]
+
+[logo]: https://github.com/gabrielamuller/fullstack_react/part-0/img/0.4_new_note.png "0.4 New Note"
 
 ```
 title 0.4 New note
