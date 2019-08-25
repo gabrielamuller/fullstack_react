@@ -1,6 +1,3 @@
-### Part 0 Exercises
-The sequence diagrams can be found in img-folder.
-
 ## 0.4 New Note
 
 ```
@@ -46,6 +43,7 @@ end note
 ```
 
 ## 0.6 New note
+![alt text](https://github.com/gabrielamuller/fullstack_react/tree/master/part-0/img/0.6_new_note.png "0.6 New Note")
 
 ```
 title 0.6 New note
