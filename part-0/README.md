@@ -1,7 +1,7 @@
-## 0.4 New Note
-![alt text][logo]
+### Part 0 Exercises
+The sequence diagrams can be found in img-folder.
 
-[logo]: https://github.com/gabrielamuller/fullstack_react/part-0/img/0.4_new_note.png "0.4 New Note"
+## 0.4 New Note
 
 ```
 title 0.4 New note
@@ -24,7 +24,7 @@ end note
 ```
 
 ## 0.5 Single Page App
-![alt text](https://github.com/gabrielamuller/fullstack_react/part-0/img/0.5_single_page_app.png "0.5 Single Page App")
+
 ```
 title 0.4 New note
 browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
@@ -46,7 +46,6 @@ end note
 ```
 
 ## 0.6 New note
-![alt text](https://github.com/gabrielamuller/fullstack_react/part-0/img/0.6_new_note.png "0.6 New Note")
 
 ```
 title 0.6 New note
