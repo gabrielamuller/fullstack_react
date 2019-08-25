@@ -43,7 +43,7 @@ end note
 ```
 
 ## 0.6 New note
-![alt text](https://github.com/gabrielamuller/fullstack_react/tree/master/part-0/img/0.6_new_note.png "0.6 New Note")
+![alt text](https://raw.githubusercontent.com/gabrielamuller/fullstack_react/master/part-0/img/0.6_new_note.png "0.6 New Note")
 
 ```
 title 0.6 New note
