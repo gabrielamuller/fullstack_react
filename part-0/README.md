@@ -1,4 +1,5 @@
 ## 0.4 New Note
+![alt text](https://raw.githubusercontent.com/gabrielamuller/fullstack_react/master/part-0/img/0.4_new_note.png "0.4 New Note")
 
 ```
 title 0.4 New note
@@ -21,6 +22,7 @@ end note
 ```
 
 ## 0.5 Single Page App
+![alt text](https://raw.githubusercontent.com/gabrielamuller/fullstack_react/master/part-0/img/0.5_single_page_app.png "0.5 Single Page App")
 
 ```
 title 0.4 New note
