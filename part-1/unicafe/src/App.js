@@ -6,10 +6,6 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
-  const handleClick = () => {
-    console.log('clicked')
-  }
-
   return (
     <div>
       <h1>Give feedback</h1>
@@ -26,8 +22,6 @@ const App = () => {
       <div>Good {good}</div>
       <div>Neutral {neutral}</div>
       <div>Bad {bad}</div>
-
-
     </div>
   )
 }
