@@ -12,6 +12,12 @@ const AnecdoteText = (props) => {
   )
 }
 
+const Votes = (props) => {
+  return (
+    <p>Has {props.votes} votes</p>
+  )
+}
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -24,16 +30,24 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
   const nextAdecdote = () => {
     let randomNumber = Math.floor(Math.random() * Math.floor(anecdotes.length));
     setSelected(randomNumber);
-  };
+  }
 
+  const voteAnecdote = () => {
+    const copy = [...votes];
+    copy[selected] += 1;
+    setVotes(copy);
+  }
 
   return (
     <div>
       <AnecdoteText anecdote={anecdotes[selected]} />
+      <Votes votes={votes[selected]} />
+      <Button onClick={voteAnecdote} text="Vote" />
       <Button onClick={nextAdecdote} text="Next anecdote" />
     </div>
   )
