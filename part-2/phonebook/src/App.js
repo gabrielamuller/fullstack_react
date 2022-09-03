@@ -19,9 +19,14 @@ const App = (props) => {
       date: new Date().toISOString(),
       id: newName
     }
-  
-    setPersons(persons.concat(personObject))
-    setNewName('')
+
+    const personNames = persons.map(person => person.content)
+    if (personNames.includes(newName.trim())) {
+      alert(`${newName} is already added to phonebook`)
+    } else {
+      setPersons(persons.concat(personObject))
+      setNewName('')
+    }
   }
 
   const handlePersonChange = (event) => {
