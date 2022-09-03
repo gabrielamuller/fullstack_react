@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const Person = ({ person }) => {
   return (
-    <li>{person.content}</li>
+    <li>{person.name} {person.number}</li>
   )
 }
 
@@ -10,17 +10,21 @@ const App = (props) => {
   const [persons, setPersons] = useState(props.persons)
   const [newName, setNewName] = useState(
     'Arto Hellas'
+  )
+  const [newNumber, setNewNumber] = useState(
+    '0101010'
   ) 
 
   const addPerson = (event) => {
     event.preventDefault()
     const personObject = {
-      content: newName,
+      name: newName,
+      number: newNumber,
       date: new Date().toISOString(),
       id: newName
     }
 
-    const personNames = persons.map(person => person.content)
+    const personNames = persons.map(person => person.name)
     if (personNames.includes(newName.trim())) {
       alert(`${newName} is already added to phonebook`)
     } else {
@@ -34,6 +38,11 @@ const App = (props) => {
     setNewName(event.target.value)
   }
 
+  const handleNumberChange = (event) => {
+    console.log(event.target.value)
+    setNewNumber(event.target.value)
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -42,6 +51,12 @@ const App = (props) => {
           name: 
           <input value={newName}
           onChange={handlePersonChange}
+          />
+        </div>
+        <div>
+          phone:
+          <input value={newNumber}
+          onChange={handleNumberChange}
           />
         </div>
         <div>
