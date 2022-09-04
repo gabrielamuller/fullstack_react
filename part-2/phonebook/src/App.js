@@ -22,6 +22,14 @@ const PersonForm = (props) => {
   )
 }
 
+const Filter = ({handleSearchChange, search}) => {
+  return (
+    <div>
+        filter shown with <input value={search} onChange={handleSearchChange}/>
+    </div>
+  )
+}
+
 const App = (props) => {
   const [persons, setPersons] = useState(props.persons)
   const [newName, setNewName] = useState(
@@ -31,7 +39,6 @@ const App = (props) => {
     '0101010'
   )
   const [search, setNewSearch] = useState("");
-
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -75,9 +82,8 @@ const App = (props) => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <form>
-        filter shown with<input value={search} onChange={handleSearchChange}/>
-      </form>
+      <Filter handleSearchChange={handleSearchChange}/>
+
       <h2>Add a new</h2>
       <PersonForm
         newName={newName}
@@ -86,6 +92,7 @@ const App = (props) => {
         handleNumberChange={handleNumberChange}
         onSubmit={addPerson}
       />
+
       <h2>Numbers</h2>
         {filtered.map((person) => {
           return (
