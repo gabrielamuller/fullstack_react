@@ -1,11 +1,5 @@
 import { useState } from 'react'
 
-const Person = ({ person }) => {
-  return (
-    <li>{person.name} {person.number}</li>
-  )
-}
-
 const App = (props) => {
   const [persons, setPersons] = useState(props.persons)
   const [newName, setNewName] = useState(
@@ -13,18 +7,20 @@ const App = (props) => {
   )
   const [newNumber, setNewNumber] = useState(
     '0101010'
-  ) 
+  )
+  const [search, setNewSearch] = useState("");
+
 
   const addPerson = (event) => {
     event.preventDefault()
     const personObject = {
       name: newName,
       number: newNumber,
-      date: new Date().toISOString(),
       id: newName
     }
 
     const personNames = persons.map(person => person.name)
+
     if (personNames.includes(newName.trim())) {
       alert(`${newName} is already added to phonebook`)
     } else {
@@ -43,9 +39,24 @@ const App = (props) => {
     setNewNumber(event.target.value)
   }
 
+  const handleSearchChange = (event) => {
+    console.log(event.target.value)
+    setNewSearch(event.target.value);
+};
+
+const filtered = !search
+    ? persons
+    : persons.filter((person) =>
+        person.name.toLowerCase().includes(search.toLowerCase())
+      );
+
   return (
     <div>
       <h2>Phonebook</h2>
+      <form>
+        filter shown with<input value={search} onChange={handleSearchChange}/>
+      </form>
+      <h2>Add a new</h2>
       <form onSubmit={addPerson}>
         <div>
           name: 
@@ -64,11 +75,13 @@ const App = (props) => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <ul>
-        {persons.map(person =>
-          <Person key={person.id} person={person} />
-        )}
-      </ul>
+        {filtered.map((person) => {
+          return (
+            <p key={person.id}>
+                {person.name} {person.number}
+            </p>
+          );
+        })}
     </div>
   )
 }
