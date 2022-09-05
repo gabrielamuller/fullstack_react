@@ -30,6 +30,18 @@ const Filter = ({handleSearchChange, search}) => {
   )
 }
 
+const Persons = ({filtered}) => {
+  return (
+      filtered.map((person) => {
+        return (
+          <p key={person.id}>
+              {person.name} {person.number}
+          </p>
+        );
+      })
+  )
+}
+
 const App = (props) => {
   const [persons, setPersons] = useState(props.persons)
   const [newName, setNewName] = useState(
@@ -94,13 +106,11 @@ const App = (props) => {
       />
 
       <h2>Numbers</h2>
-        {filtered.map((person) => {
-          return (
-            <p key={person.id}>
-                {person.name} {person.number}
-            </p>
-          );
-        })}
+        <Persons
+            persons={persons}
+            filtered={filtered}
+            handlePersonChange={(persons) => setPersons(persons)}
+        />
     </div>
   )
 }
