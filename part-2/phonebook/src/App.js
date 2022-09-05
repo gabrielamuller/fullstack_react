@@ -109,7 +109,6 @@ const App = (props) => {
         <Persons
             persons={persons}
             filtered={filtered}
-            handlePersonChange={(persons) => setPersons(persons)}
         />
     </div>
   )
