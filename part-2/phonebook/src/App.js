@@ -67,6 +67,7 @@ const App = (props) => {
     } else {
       setPersons(persons.concat(personObject))
       setNewName('')
+      setNewNumber('')
     }
   }
 
