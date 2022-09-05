@@ -32,13 +32,13 @@ const Filter = ({handleSearchChange, search}) => {
 
 const Persons = ({filtered}) => {
   return (
-      filtered.map((person) => {
+    filtered.map((person) => {
         return (
           <p key={person.id}>
               {person.name} {person.number}
           </p>
         );
-      })
+    })
   )
 }
 
@@ -108,7 +108,6 @@ const App = (props) => {
 
       <h2>Numbers</h2>
         <Persons
-            persons={persons}
             filtered={filtered}
         />
     </div>
