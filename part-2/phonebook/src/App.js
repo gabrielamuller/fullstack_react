@@ -32,13 +32,11 @@ const Filter = ({handleSearchChange, search}) => {
 
 const Persons = ({filtered}) => {
   return (
-    filtered.map((person) => {
-        return (
-          <p key={person.id}>
-              {person.name} {person.number}
-          </p>
-        );
-    })
+    filtered.map((person) =>
+      <p key={person.id}>
+          {person.name} {person.number}
+      </p>
+    )
   )
 }
 
