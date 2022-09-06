@@ -1,5 +1,4 @@
 import Languages from './Languages'
-import CountryName from './CountryName'
 import Button from './Button'
 
 
@@ -13,8 +12,9 @@ const Countries = ({filtered, search, setNewSearch}) => {
 		filtered.map((country) =>
 		  filtered.length <= 10 && filtered.length > 1 ? (
 			<div key={country.name.common}>
-				<CountryName country={country}/>
-				<Button text='show' onClick={() => setNewSearch(country.name.common)} />
+				<p>
+					{country.name.common} <Button text='show' onClick={() => setNewSearch(country.name.common)} />
+				</p>
 			</div>
 
 		  ) : (
