@@ -21,6 +21,20 @@ const CountryName = ({ country }) => {
   );
 };
 
+const Languages = ({ languages }) => {
+  return(
+    <div>
+      <h3>Languages</h3>
+      <ul>
+        {languages.map((language) =>
+          <li key={language[0]}>
+            {language[1]}</li>
+        )}
+      </ul>
+    </div>
+  )
+}
+
 const Countries = ({filtered, search}) => {
   return(
     search === '' ? (
@@ -36,6 +50,7 @@ const Countries = ({filtered, search}) => {
             <h2>{country.name.common}</h2>
             <p>Capital: {country.capital}</p>
             <p>Area: {country.area}</p>
+            <Languages languages={Object.entries(country.languages)} />
             <img src={country.flags.png} alt='Country flag' />
           </div>
         )
