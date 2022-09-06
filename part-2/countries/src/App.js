@@ -31,7 +31,7 @@ console.log(filtered);
   return (
     <div>
       <Filter onChange={handleSearch} value={search}/>
-      <Countries filtered={filtered}/>
+      <Countries filtered={filtered} setNewSearch={setNewSearch}/>
     </div>
   )
 }
