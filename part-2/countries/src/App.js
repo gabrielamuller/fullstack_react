@@ -11,15 +11,35 @@ const Filter = ({ onChange, value }) => {
   );
 };
 
-const Countries = ({filtered}) => {
+const CountryName = ({ country }) => {
   return (
-    filtered.map((country) =>
-    <div key={country.name.common}>
-      <h2>{country.name.common}</h2>
-      <p>Capital: {country.capital}</p>
-      <p>Area: {country.area}</p>
-      <img src={country.flags.png} alt='' />
-    </div>
+    <>
+      <div>
+        <p>{country.name.common}</p>
+      </div>
+    </>
+  );
+};
+
+const Countries = ({filtered, search}) => {
+  return(
+    search === '' ? (
+      []
+    ) : filtered.length > 10 ? (
+      <p>Too many searches, specify another filter</p>
+    ) : (
+      filtered.map((country) =>
+        filtered.length <= 10 && filtered.length > 1 ? (
+          <CountryName key={country.name.common} country={country}/>
+        ) : (
+          <div key={country.name.common}>
+            <h2>{country.name.common}</h2>
+            <p>Capital: {country.capital}</p>
+            <p>Area: {country.area}</p>
+            <img src={country.flags.png} alt='Country flag' />
+          </div>
+        )
+      )
     )
   )
 }
@@ -41,9 +61,11 @@ const App = () => {
   setNewSearch(event.target.value);
 }
 
-const filtered = countries.filter((country) =>
+const filtered = search.length > 0
+? countries.filter((country) =>
   country.name.common.toLowerCase().includes(search.toLowerCase())
-);
+  ) : []
+
 console.log(filtered);
 
   return (
