@@ -1,6 +1,5 @@
-import Languages from './Languages'
 import Button from './Button'
-
+import Country from './Country'
 
 const Countries = ({filtered, search, setNewSearch}) => {
 	return(
@@ -19,11 +18,7 @@ const Countries = ({filtered, search, setNewSearch}) => {
 
 		  ) : (
 			<div key={country.name.common}>
-			  <h2>{country.name.common}</h2>
-			  <p>Capital: {country.capital}</p>
-			  <p>Area: {country.area}</p>
-			  <Languages languages={Object.entries(country.languages)} />
-			  <img src={country.flags.png} alt='Country flag' />
+				<Country country={country} />
 			</div>
 		  )
 		)
