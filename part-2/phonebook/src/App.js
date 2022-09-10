@@ -40,27 +40,24 @@ const App = (props) => {
     if (personNames.includes(newName.trim())) {
       window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
       && updatePerson(...personIds)
-      setNotificationMessage(
-        `Updated ${newName}`
-      )
-      setTimeout(() => {
-        setNotificationMessage(null)
-      }, 5000)
+
     } else {
 
       personService
-      .create(personObject)
-      .then(returnedPerson => {
-        setPersons(persons.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('')
-        setNotificationMessage(
-          `Added ${newName}`
-        )
-        setTimeout(() => {
-          setNotificationMessage(null)
-        }, 5000)
-      })
+        .create(personObject)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
+        .then(() => {
+          setNotificationMessage(
+            `Added ${newName}`
+          )
+          setTimeout(() => {
+            setNotificationMessage(null)
+          }, 5000)
+        })
     }
   }
 
@@ -94,6 +91,14 @@ const App = (props) => {
       .update(id, changedNumber)
       .then(returnedPerson => {
         setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+      })
+      .then(() => {
+        setNotificationMessage(
+          `Updated ${newName}`
+        )
+        setTimeout(() => {
+          setNotificationMessage(null)
+        }, 5000)
       })
   }
 
