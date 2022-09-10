@@ -16,7 +16,7 @@ const App = (props) => {
   )
   const [search, setNewSearch] = useState("");
   const [notificationMessage, setNotificationMessage] = useState(null)
-
+  const [type, setType] = useState("");
 
   useEffect(() => {
     personService
@@ -49,6 +49,7 @@ const App = (props) => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+          setType('successful')
         })
         .then(() => {
           setNotificationMessage(
@@ -62,17 +63,14 @@ const App = (props) => {
   }
 
   const handlePersonChange = (event) => {
-    console.log(event.target.value)
     setNewName(event.target.value)
   }
 
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
     setNewNumber(event.target.value)
   }
 
   const handleSearchChange = (event) => {
-    console.log(event.target.value)
     setNewSearch(event.target.value);
   }
 
@@ -93,6 +91,7 @@ const App = (props) => {
         setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
       })
       .then(() => {
+        setType('successful')
         setNotificationMessage(
           `Updated ${newName}`
         )
@@ -100,6 +99,16 @@ const App = (props) => {
           setNotificationMessage(null)
         }, 5000)
       })
+        .catch(error => {
+          setType('unsuccessful')
+
+          setNotificationMessage(
+            `Information of ${newName} has already been removed from server`
+          )
+          setTimeout(error => {
+            setNotificationMessage(null)
+          }, 5000)
+        })
   }
 
   const filtered = !search
@@ -111,7 +120,7 @@ const App = (props) => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <Notification message={notificationMessage} />
+      <Notification message={notificationMessage} type={type} />
       <Filter handleSearchChange={handleSearchChange}/>
 
       <h2>Add a new</h2>
