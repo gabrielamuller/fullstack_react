@@ -62,6 +62,13 @@ const App = (props) => {
     setNewSearch(event.target.value);
   }
 
+  const deletePerson = id => {
+    personService.deleteData(id)
+      .then(setPersons(persons.filter(
+        person => person.id !== id
+        )))
+  }
+
   const filtered = !search
     ? persons
     : persons.filter((person) =>
@@ -84,7 +91,7 @@ const App = (props) => {
 
       <h2>Numbers</h2>
         <Persons
-            filtered={filtered}
+            filtered={filtered} request={deletePerson}
         />
     </div>
   )
