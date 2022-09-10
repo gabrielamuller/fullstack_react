@@ -32,15 +32,17 @@ const App = (props) => {
     }
 
     const personNames = persons.map(person => person.name)
+    const personIds = persons.filter(person => person.name === newName).map(id => id.id)
 
     if (personNames.includes(newName.trim())) {
-      alert(`${newName} is already added to phonebook`)
+      window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
+      && updatePerson(...personIds)
     } else {
 
       personService
       .create(personObject)
-      .then(response => {
-        setPersons(persons.concat(response.data))
+      .then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson))
         setNewName('')
         setNewNumber('')
       })
@@ -67,6 +69,17 @@ const App = (props) => {
       .then(setPersons(persons.filter(
         person => person.id !== id
         )))
+  }
+
+  const updatePerson = id => {
+    const person = persons.find(p => p.id === id)
+    const changedNumber = { ...person, number: newNumber }
+
+    personService
+      .update(id, changedNumber)
+      .then(returnedPerson => {
+        setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+      })
   }
 
   const filtered = !search
